@@ -128,6 +128,15 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+      - name: Copy .env file via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          source: ".env"
+          target: "kittygram"
       - name: Copy docker-compose.yml via ssh
         uses: appleboy/scp-action@master
         with:
