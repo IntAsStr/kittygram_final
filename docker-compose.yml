@@ -32,3 +32,4 @@ services:
       - static:/static
     depends_on:
       - backend
+      - frontend
