@@ -3,6 +3,7 @@ version: '3'
 volumes:
   pg_data:
   static:
+  media:
 
 services:
   db:
@@ -17,6 +18,7 @@ services:
       - db
     volumes:
       - static:/backend_static
+      - media:/app/media
   frontend:
     env_file: .env
     image: mostloony/kittygram_frontend
@@ -30,6 +32,7 @@ services:
       - 9000:80
     volumes:
       - static:/static
+      - media:/media
     depends_on:
       - backend
       - frontend
