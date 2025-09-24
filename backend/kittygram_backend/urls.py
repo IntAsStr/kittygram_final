@@ -11,8 +11,9 @@ router.register(r'achievements', AchievementViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),  # API routes
-    path('api/', include('cats.urls')),  # Все остальные пути из cats
+    path('api/', include(router.urls)),
+    path('api/', include('djoser.urls')),  # Работа с пользователями
+    path('api/', include('djoser.urls.authtoken')),  # Работа с токенами
 ]
 
 if settings.DEBUG:
